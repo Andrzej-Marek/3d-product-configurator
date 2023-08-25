@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-input-mask": "2.0.4",
     "react-popper": "2.3.0",
+    "react-use": "17.4.0",
     "three": "0.155.0",
     "tippy.js": "6.3.7",
     "valtio": "1.11.2"
