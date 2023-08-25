@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export type FieldState = "success" | "error" | "primary";
 

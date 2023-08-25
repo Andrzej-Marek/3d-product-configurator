@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
-import Scrollbars from "react-custom-scrollbars";
 
 export type Tab<Meta = any> = {
   key: string;

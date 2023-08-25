@@ -1,13 +1,10 @@
 import { useMemo, useState } from "react";
-import { useMedia } from "react-use";
 import {
   configurationStore,
   useConfigurationStore,
 } from "../store/configurator.store";
 import classNames from "classnames";
 import Card from "../components/Card";
-import { Tooltip } from "../components/tooltip";
-import { Dropdown } from "../components/dropdowns";
 import Popover from "../components/popover/Popover";
 import TruckIcon from "../components/TruckIcon";
 import LetterIcon from "../components/LetterIcon";
@@ -181,7 +178,7 @@ const ColorCustomizationElement = ({
 
   const colorsTiles = useMemo(
     () =>
-      colors.map(({ color, additionalCost }) => (
+      colors.map(({ color }) => (
         <div
           key={color}
           style={{ backgroundColor: color }}
@@ -204,7 +201,7 @@ const ColorCustomizationElement = ({
 };
 
 const DesktopConfiguration = ({ className }: { className: string }) => {
-  const { items, current } = useConfigurationStore();
+  const { items } = useConfigurationStore();
   return (
     <div className="relative top-2 space-y-2">
       <Card className={classNames(className, "space-y-4")}>

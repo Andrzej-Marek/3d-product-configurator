@@ -1,4 +1,4 @@
-import { Popover as HeadlessPopover, Transition } from "@headlessui/react";
+import { Popover as HeadlessPopover } from "@headlessui/react";
 import { ReactNode, useState } from "react";
 import { usePopper } from "react-popper";
 
@@ -14,7 +14,7 @@ const Popover = ({ children, content }: PopoverTypes) => {
 
   return (
     <HeadlessPopover>
-      {({ open }) => (
+      {() => (
         /* Use the `open` state to conditionally change the direction of the chevron icon. */
         <>
           <HeadlessPopover.Button

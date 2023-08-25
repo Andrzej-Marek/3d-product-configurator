@@ -4,9 +4,8 @@ Command: npx gltfjsx@6.2.10 shelfgrups.glb -k -t
 */
 
 import * as THREE from "three";
-import { Html, Line, Text, useGLTF } from "@react-three/drei";
+import { Text, useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { useFrame, useThree } from "@react-three/fiber";
 import { PalletShelfMaterial, usePalletShelfStore } from "./pallet-shelf.store";
 import { useMemo } from "react";
 import { useShelfMaterials } from "./hooks/useShelfMaterials.hook";
