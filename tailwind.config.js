@@ -53,7 +53,6 @@ export default {
   },
   plugins: [
     require("@tailwindcss/forms"),
-    require("@tailwindcss/line-clamp"),
     require("postcss-100vh-fix"),
     require("daisyui"),
   ],
