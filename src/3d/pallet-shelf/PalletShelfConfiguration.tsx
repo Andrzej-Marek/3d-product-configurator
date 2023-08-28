@@ -20,7 +20,6 @@ const PalletShelfConfiguration = ({}: PalletShelfConfigurationProps) => {
     <>
       <ShopLayout className="lg:flex">
         <div className="h-[40%] relative lg:h-full lg:auto lg:w-2/3 lg:flex-1">
-          <div className="absolute top-0 bottom-0 left-0 right-0 "></div>
           <Viewer />
         </div>
 

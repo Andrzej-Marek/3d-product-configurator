@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import AdditionalCostLabel from "../../../components/AdditionalCostLabel";
 import NextButton from "../components/NextButton";
 import { OptionLabel } from "../components/OptionLabel";
@@ -27,11 +28,12 @@ const ColorsConfiguration = ({}: ColorsConfigurationProps) => {
 };
 
 const LegsColorPicker = () => {
+  const { t } = useTranslation();
   const { legs } = usePalletShelfStore();
   const { setLegsColor } = usePalletShelfActions();
   return (
     <div className="space-y-2 lg:space-y-4 lg:mt-4">
-      <OptionLabel>Kolor nóg</OptionLabel>
+      <OptionLabel>{t("summary_items.legsColor")}</OptionLabel>
       <div className="flex items-center gap-4">
         {Object.entries(legsColorsConfig).map(([key, config]) => (
           <div key={key} onClick={() => setLegsColor(key as LegsColors)}>
@@ -53,11 +55,12 @@ const LegsColorPicker = () => {
 };
 
 const FrameColorPicker = () => {
+  const { t } = useTranslation();
   const { frame } = usePalletShelfStore();
   const { setFrameColor } = usePalletShelfActions();
   return (
     <div className="space-y-2 lg:space-y-4 lg:mt-4">
-      <OptionLabel>Kolor półek</OptionLabel>
+      <OptionLabel>{t("summary_items.shelfColor")}</OptionLabel>
       <div className="flex items-center gap-4">
         {Object.entries(frameColorsConfig).map(([key, config]) => (
           <div key={key} onClick={() => setFrameColor(key as FrameColors)}>

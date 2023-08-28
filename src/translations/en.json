@@ -1,0 +1,70 @@
+{
+  "productName": "Warehouse Shelf",
+  "dimension_one": "Dimension",
+  "dimension_other": "Dimensions",
+
+  "shelf_one": "Shelf",
+  "shelf_other": "Shelves",
+  "color_one": "Color",
+  "color_other": "Colors",
+
+  "unit_one": "Piece",
+  "unit_two": "Pieces",
+  "unit_many": "Pieces",
+  "unit_other": "Pieces",
+
+  "accessories": {
+    "title": "Accessories",
+    "shelfStrengthen": "Additional Shelf Strengthening",
+    "installationKit": "Installation Kit"
+  },
+  "summary_items": {
+    "shelfColor": "Shelf Color",
+    "shelfMaterial": "Shelf Material",
+    "shelf": "Shelves",
+    "legsColor": "Legs Color"
+  },
+  "summary": "Summary",
+
+  "shelfAmount": "Shelves amount",
+
+  "materials": {
+    "label": "Materials",
+    "laminate": "Laminate",
+    "playwood": "Plywood",
+    "metal": "Stainless Steel",
+    "wood": "Oak Wood"
+  },
+  "colors": {
+    "blue": "Blue",
+    "silver": "Silver",
+    "black": "Black",
+    "red": "Red",
+    "orange": "Orange"
+  },
+  "height": "Height",
+  "width": "Width",
+  "depth": "Depth",
+  "next": "Next",
+  "showDimensions": "Show Dimensions",
+  "hideDimensions": "Hide Dimensions",
+  "view": {
+    "front": "Front View",
+    "side": "Side View",
+    "top": "Top View"
+  },
+  "total": "Total",
+  "cart": {
+    "elements": "Cart Items",
+    "addToCart": "Add to Cart"
+  },
+  "thanksModal": {
+    "title": "Thank you for trying the configurator!",
+    "list": [
+      "Need something similar?",
+      "A web or mobile application?",
+      "Or maybe a full online store?"
+    ],
+    "contactUs": "Contact us at"
+  }
+}

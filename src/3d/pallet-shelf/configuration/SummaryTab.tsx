@@ -6,14 +6,15 @@ import {
 import { formatCurrency } from "../../../utils/formatCurrency";
 import classNames from "classnames";
 import HorizontalDividerLine from "../../../components/HorizontalDividerLine";
-import { getVariety } from "../../../utils/getVariety";
 import { frameColorsConfig, legsColorsConfig } from "../configs";
 import { Button } from "../components/NextButton";
 import Modal from "../../../components/Modal";
+import { useTranslation } from "react-i18next";
 
 type SummaryTabProps = {};
 
 const SummaryTab = ({}: SummaryTabProps) => {
+  const { t } = useTranslation();
   const [showModal, toggleModal] = useState(false);
   const { accessories, frame, height, legs, shelf, width, depth, summary } =
     usePalletShelfStore();
@@ -22,15 +23,15 @@ const SummaryTab = ({}: SummaryTabProps) => {
       <Modal open={showModal} onClose={() => toggleModal(false)}>
         <div>
           <h3 className="text-center text-lg lg:text-lg font-semibold">
-            Dziękujemy za spróbowanie konfiguratora!
+            {t("thanksModal.title")}
           </h3>
           <div className="mt-4">
-            <p>Potrzebujesz czegoś podobnego?</p>
-            <p>Aplikacji internetowej lub mobilnej?</p>
-            <p>A może pełnego sklepu internetowego?</p>
+            {t("thanksModal.list", { returnObjects: true }).map((el, index) => (
+              <p key={index}>{el}</p>
+            ))}
           </div>
           <div className="mt-4 font-bold">
-            Skontaktuj się z nami na{" "}
+            {t("thanksModal.contactUs")}
             <a
               href="mailto:kontakt@musclecode.pl"
               target="_blank"
@@ -44,7 +45,7 @@ const SummaryTab = ({}: SummaryTabProps) => {
 
       <div className="w-full pb-14 lg:mt-4 lg:pb-0">
         <h5 className="text-xl font-semibold text-center mb-2">
-          Elementy Kosztów
+          {t("cart.elements")}
         </h5>
         <EstimateElement
           base={{ label: `${height.minSize} cm`, value: 0 }}
@@ -53,7 +54,7 @@ const SummaryTab = ({}: SummaryTabProps) => {
             value: height.additionalPrice,
           }}
         >
-          Wysokość {height.value} cm
+          {t("height")} {height.value} cm
         </EstimateElement>
         <EstimateElement
           base={{ label: `${height.minSize} cm`, value: 0 }}
@@ -62,7 +63,7 @@ const SummaryTab = ({}: SummaryTabProps) => {
             value: width.additionalPrice,
           }}
         >
-          Szerokość {width.value} cm
+          {t("width")} {width.value} cm
         </EstimateElement>
         <EstimateElement
           base={{ label: `${depth.minSize} cm`, value: 0 }}
@@ -71,62 +72,58 @@ const SummaryTab = ({}: SummaryTabProps) => {
             value: depth.additionalPrice,
           }}
         >
-          Głębokość {depth.value} cm
+          {t("depth")} {depth.value} cm
         </EstimateElement>
         <EstimateElement
           base={{
-            label: `${getVariety(
-              shelf.shelfs.itemsIncludeInPrice,
-              "sztuka",
-              "sztuki",
-              "sztuk"
-            )}`,
+            label: `${shelf.shelfs.itemsIncludeInPrice} ${t("unit", {
+              count: 2,
+            })}`,
             value: 0,
           }}
           additional={{
-            label: `+ ${getVariety(
-              shelf.shelfs.amount - shelf.shelfs.itemsIncludeInPrice,
-              "sztuka",
-              "sztuki",
-              "sztuk"
-            )}`,
+            label: `+${
+              shelf.shelfs.amount - shelf.shelfs.itemsIncludeInPrice
+            } ${t("unit", {
+              count: shelf.shelfs.amount - shelf.shelfs.itemsIncludeInPrice,
+            })}`,
             value: shelf.shelfs.additionalCost,
           }}
         >
-          Regały {getVariety(shelf.shelfs.amount, "sztuka", "sztuki", "sztuk")}
+          {t("summary_items.shelf")}
         </EstimateElement>
         <EstimateElement
           base={{
-            label: `${palletShelfMaterialConfig["plywood"].name}`,
+            label: t(palletShelfMaterialConfig["plywood"].name as any),
             value: 0,
           }}
           additional={{
-            label: `+ ${
-              palletShelfMaterialConfig[shelf.material.current].name
-            }`,
+            label: `+ ${t(
+              palletShelfMaterialConfig[shelf.material.current].name as any
+            )}`,
             value: shelf.material.additionalCost,
           }}
         >
-          Materiał regałów
+          {t("summary_items.shelfMaterial")}
         </EstimateElement>
 
         <EstimateElement
-          base={{ label: `Niebieski`, value: 0 }}
+          base={{ label: t("colors.blue"), value: 0 }}
           additional={{
-            label: `+ ${frameColorsConfig[frame.colorKey].name}`,
+            label: `+ ${t(frameColorsConfig[frame.colorKey].name as any)}`,
             value: frame.additionalCost,
           }}
         >
-          Kolor półek
+          {t("summary_items.shelfColor")}
         </EstimateElement>
         <EstimateElement
-          base={{ label: `Niebieski`, value: 0 }}
+          base={{ label: t("colors.blue"), value: 0 }}
           additional={{
-            label: `+ ${legsColorsConfig[legs.colorKey].name}`,
+            label: `+ ${t(legsColorsConfig[legs.colorKey].name as any)}`,
             value: legs.additionalCost,
           }}
         >
-          Kolor nóg
+          {t("summary_items.legsColor")}
         </EstimateElement>
         {accessories.installationKit.selected && (
           <EstimateElement
@@ -135,7 +132,7 @@ const SummaryTab = ({}: SummaryTabProps) => {
               value: accessories.installationKit.additionalCost,
             }}
           >
-            Zestaw montażowy
+            {t("accessories.installationKit")}
           </EstimateElement>
         )}
         {accessories.shelfStrengthen.selected && (
@@ -145,20 +142,22 @@ const SummaryTab = ({}: SummaryTabProps) => {
               value: accessories.shelfStrengthen.additionalCost,
             }}
           >
-            Dodatkowe wzmocnienia półek
+            {t("accessories.shelfStrengthen")}
           </EstimateElement>
         )}
 
         <div>
           <div className="flex justify-between items-center mb-2">
-            <span>RAZEM</span>
+            <span>{t("total")}</span>
             <span className="text-lg font-bold">
               {formatCurrency(summary.finalPrice)}
             </span>
           </div>
         </div>
         <div className="fixed bottom-0 right-0 left-0 mx-2 mb-4 lg:relative lg:mx-0 lg:mt-4">
-          <Button onClick={() => toggleModal(true)}>Dodaj do koszyka</Button>
+          <Button onClick={() => toggleModal(true)}>
+            {t("cart.addToCart")}
+          </Button>
         </div>
       </div>
     </>

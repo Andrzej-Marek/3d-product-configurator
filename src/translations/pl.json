@@ -1,0 +1,74 @@
+{
+  "productName": "Półka Magazynowa",
+  "dimension_one": "Wymiar",
+  "dimension_few": "Wymiary",
+  "dimension_other": "Wymiary",
+
+  "shelf_one": "Półka",
+  "shelf_few": "Półki",
+  "shelf_other": "Półki",
+  "color_one": "Kolor",
+  "color_few": "Kolory",
+  "color_other": "Kolory",
+
+  "unit_one": "Sztuka",
+  "unit_two": "Sztuki",
+  "unit_few": "Sztuki",
+  "unit_many": "Sztuk",
+  "unit_other": "Sztuki",
+
+  "accessories": {
+    "title": "Akcesoria",
+    "shelfStrengthen": "Dodatkowe Wzmocnienie Półki",
+    "installationKit": "Zestaw Montażowy"
+  },
+  "summary_items": {
+    "shelfColor": "Kolor Półki",
+    "shelfMaterial": "Materiał Półki",
+    "shelf": "Półki",
+    "legsColor": "Kolor Nóg"
+  },
+  "summary": "Podsumowanie",
+
+  "shelfAmount": "Ilość Półek",
+
+  "materials": {
+    "label": "Materiały",
+    "laminate": "Laminat",
+    "playwood": "Sklejka",
+    "metal": "Stal Nierdzewna",
+    "wood": "Drewno Dębowe"
+  },
+  "colors": {
+    "blue": "Niebieski",
+    "silver": "Srebrny",
+    "black": "Czarny",
+    "red": "Czerwony",
+    "orange": "Pomarańczowy"
+  },
+  "height": "Wysokość",
+  "width": "Szerokość",
+  "depth": "Głębokość",
+  "next": "Dalej",
+  "showDimensions": "Pokaż Wymiary",
+  "hideDimensions": "Ukryj Wymiary",
+  "view": {
+    "front": "Widok Przedni",
+    "side": "Widok Boczny",
+    "top": "Widok Z Góry"
+  },
+  "total": "Razem",
+  "cart": {
+    "elements": "Elementy Koszyka",
+    "addToCart": "Dodaj do Koszyka"
+  },
+  "thanksModal": {
+    "title": "Dziękujemy za wypróbowanie konfiguratora!",
+    "list": [
+      "Potrzebujesz czegoś podobnego?",
+      "Aplikacja internetowa lub mobilna?",
+      "A może pełny sklep internetowy?"
+    ],
+    "contactUs": "Skontaktuj się z nami pod adresem"
+  }
+}

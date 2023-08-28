@@ -17,18 +17,21 @@ import { OptionLabel } from "./components/OptionLabel";
 import AccessoriesConfiguration from "./configuration/AccessoriesConfiguration";
 import SummaryTab from "./configuration/SummaryTab";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { useTranslation } from "react-i18next";
 
 type ConfigurationProps = {};
 
 const Configuration = ({}: ConfigurationProps) => {
+  const { t } = useTranslation();
   const { summary, currentTab } = usePalletShelfStore();
   const { setTab } = usePalletShelfActions();
+
   return (
     <div className="bg-white h-full w-full rounded-t-2xl px-3 py-2 overflow-y-auto lg:rounded-xl lg:p-6 ">
       <div className="flex flex-col h-full w-full ">
         <div>
           <div className="flex items-center justify-between lg:flex-col lg:items-start">
-            <h2 className="text-lg lg:text-2xl lg:mb-1">Regał magazynowy</h2>
+            <h2 className="text-lg lg:text-2xl lg:mb-1">{t("productName")}</h2>
             <div className="font-medium text-lg lg:font-bold lg:text-2xl">
               {formatCurrency(summary.finalPrice)}
             </div>
@@ -41,27 +44,27 @@ const Configuration = ({}: ConfigurationProps) => {
           tabs={[
             {
               component: <SizeTab />,
-              label: "Wymiary",
+              label: t("dimension", { count: 2 }),
               key: "SIZE",
             },
             {
               component: <Shelf />,
-              label: "Regały",
+              label: t("shelf", { count: 2 }),
               key: "SHELF",
             },
             {
               component: <ColorsConfiguration />,
-              label: "Kolory",
+              label: t("color", { count: 2 }),
               key: "COLORS",
             },
             {
               component: <AccessoriesConfiguration />,
-              label: "Akcesoria",
+              label: t("accessories.title", { count: 2 }),
               key: "ACCESSORIES",
             },
             {
               component: <SummaryTab />,
-              label: "Podsumowanie",
+              label: t("summary" as any),
               key: "SUMMARY",
             },
           ]}
@@ -72,13 +75,14 @@ const Configuration = ({}: ConfigurationProps) => {
 };
 
 const Shelf = () => {
+  const { t } = useTranslation();
   const { shelf } = usePalletShelfStore();
   const { setShelfAmount, setShelfMaterial } = usePalletShelfActions();
   return (
     <div className="flex flex-col w-full">
       <div className=" flex flex-col flex-1 ">
         <div className="space-y-2 lg:space-y-4 lg:mt-4">
-          <OptionLabel>Ilość regałów</OptionLabel>
+          <OptionLabel>{t("shelfAmount")}</OptionLabel>
           <div className="flex flex-wrap gap-4">
             {Array.from({ length: shelf.shelfs.maxAmount }).map(
               (_el, index) => {
@@ -121,11 +125,11 @@ const Shelf = () => {
           </div>
         </div>
         <div className="space-y-2 lg:space-y-4 lg:mt-4">
-          <OptionLabel>Materiały</OptionLabel>
+          <OptionLabel>{t("materials.label")}</OptionLabel>
           <div className="overflow-auto flex md:flex-wrap gap-4 mt-2  ">
             {Object.entries(palletShelfMaterialConfig).map(
               ([key, { previewUrl, name, additionalCost }]) => (
-                <Tooltip content={name} key={key}>
+                <Tooltip content={t(name as any)} key={key}>
                   <div>
                     <img
                       key={key}
@@ -160,13 +164,14 @@ const Shelf = () => {
 
 const SizeTab = () => {
   const { width, depth, height } = usePalletShelfStore();
+  const { t } = useTranslation();
   const { setSize } = usePalletShelfActions();
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-1 mt-4 flex-col gap-4 lg:flex-auto">
         <AdditionalCostWrapper additionalCost={width.additionalPrice}>
           <RangeInput
-            label="Szerokość"
+            label={t("width")}
             min={width.minSize}
             max={width.maxSize}
             step={width.step}
@@ -180,7 +185,7 @@ const SizeTab = () => {
 
         <AdditionalCostWrapper additionalCost={height.additionalPrice}>
           <RangeInput
-            label="Wysokość"
+            label={t("height")}
             min={height.minSize}
             max={height.maxSize}
             step={height.step}
@@ -194,7 +199,7 @@ const SizeTab = () => {
 
         <AdditionalCostWrapper additionalCost={depth.additionalPrice}>
           <RangeInput
-            label="Głębokość"
+            label={t("depth")}
             min={depth.minSize}
             max={depth.maxSize}
             step={depth.step}

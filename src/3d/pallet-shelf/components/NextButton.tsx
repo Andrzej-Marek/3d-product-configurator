@@ -5,6 +5,7 @@ import {
   usePalletShelfStore,
 } from "../pallet-shelf.store";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 
 type ButtonProps = {
   className?: string;
@@ -22,7 +23,9 @@ export const Button = ({ className, onClick, children }: ButtonProps) => (
     {children}
   </button>
 );
+
 const NextButton = ({ className }: { className?: string }) => {
+  const { t } = useTranslation();
   const { currentTab } = usePalletShelfStore();
   const { setTab } = usePalletShelfActions();
 
@@ -48,7 +51,7 @@ const NextButton = ({ className }: { className?: string }) => {
       }}
     >
       {" "}
-      {currentTab === "ACCESSORIES" ? "Podsumowanie" : "Dalej"}
+      {t(currentTab === "ACCESSORIES" ? "summary" : ("next" as any))}
     </Button>
   );
 };

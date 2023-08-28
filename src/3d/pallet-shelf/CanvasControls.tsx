@@ -9,6 +9,7 @@ import {
   usePalletShelfActions,
   usePalletShelfStore,
 } from "./pallet-shelf.store";
+import { useTranslation } from "react-i18next";
 
 type CanvasControlsProps = {};
 
@@ -16,6 +17,7 @@ const CanvasControls = ({}: CanvasControlsProps) => {
   const { showSizes } = usePalletShelfStore();
   const { hideSizes, showSizes: showSizesAction } = usePalletShelfActions();
   const { camera } = useThree();
+  const { t } = useTranslation();
 
   const onFrontView = () => {
     gsap.to(camera.position, { ...new Vector3(0, 1.5, 4), duration: 1 });
@@ -31,6 +33,7 @@ const CanvasControls = ({}: CanvasControlsProps) => {
       duration: 1,
     });
   };
+
   const onTopView = () => {
     gsap.to(camera.position, {
       ...new Vector3(-0.1422903384930902, 3.695518130045096, 1.524106036363309),
@@ -41,7 +44,7 @@ const CanvasControls = ({}: CanvasControlsProps) => {
   return (
     <Html fullscreen>
       <div className="hidden lg:flex lg:justify-center lg:gap-4 lg:ml-4 lg:mt-4">
-        <ButtonIcon onClick={onFrontView} tooltipContent="Frontowy widok">
+        <ButtonIcon onClick={onFrontView} tooltipContent={t("view.front")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -73,7 +76,7 @@ const CanvasControls = ({}: CanvasControlsProps) => {
           </svg>
         </ButtonIcon>
 
-        <ButtonIcon onClick={onSideView} tooltipContent="Boczny widok">
+        <ButtonIcon onClick={onSideView} tooltipContent={t("view.side")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -107,7 +110,7 @@ const CanvasControls = ({}: CanvasControlsProps) => {
             />
           </svg>
         </ButtonIcon>
-        <ButtonIcon onClick={onTopView} tooltipContent="Górny widok">
+        <ButtonIcon onClick={onTopView} tooltipContent={t("view.top")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -144,7 +147,7 @@ const CanvasControls = ({}: CanvasControlsProps) => {
 
         <ButtonIcon
           className={classNames(showSizes ? "bg-purple-200" : "")}
-          tooltipContent={showSizes ? "Ukryj wymiary" : "Pokaż wymiary"}
+          tooltipContent={t(showSizes ? "hideDimensions" : "showDimensions")}
           onClick={showSizes ? hideSizes : showSizesAction}
         >
           <svg

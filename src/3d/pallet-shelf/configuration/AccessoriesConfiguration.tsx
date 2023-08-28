@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import AdditionalCostLabel from "../../../components/AdditionalCostLabel";
 import Checkbox from "../../../components/form/checkbox/Checkbox";
 import NextButton from "../components/NextButton";
@@ -9,6 +10,7 @@ import {
 type AccessoriesConfigurationProps = {};
 
 const AccessoriesConfiguration = ({}: AccessoriesConfigurationProps) => {
+  const { t } = useTranslation();
   const { accessories } = usePalletShelfStore();
   const { setAccessories } = usePalletShelfActions();
   return (
@@ -16,7 +18,7 @@ const AccessoriesConfiguration = ({}: AccessoriesConfigurationProps) => {
       <div className="flex flex-1 flex-col w-full gap-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="sm:text-base">Dodatkowe wzmocnienia półek</p>
+            <p className="sm:text-base">{t("accessories.shelfStrengthen")}</p>
             <AdditionalCostLabel
               className="!text-left"
               isActive={accessories.shelfStrengthen.selected}
@@ -35,7 +37,7 @@ const AccessoriesConfiguration = ({}: AccessoriesConfigurationProps) => {
 
         <div className="flex items-center justify-between ">
           <div>
-            <p className="sm:text-base">Zestaw montażowy</p>
+            <p className="sm:text-base">{t("accessories.installationKit")}</p>
             <AdditionalCostLabel
               className="!text-left"
               isActive={accessories.installationKit.selected}

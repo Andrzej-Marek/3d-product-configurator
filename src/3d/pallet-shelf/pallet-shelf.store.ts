@@ -33,21 +33,21 @@ export const palletShelfMaterialConfig: Record<
   { previewUrl: string; name: string; additionalCost?: number }
 > = {
   laminate: {
-    name: "Laminat",
+    name: "materials.laminate",
     previewUrl: "/pallet-shelf/textures/laminate_floor_diff_1k.jpg",
   },
   plywood: {
-    name: "Sklejka",
+    name: "materials.playwood",
     previewUrl: "/pallet-shelf/textures/playwood.jpeg",
   },
   metal: {
-    name: "Metal nierdzewny",
+    name: "materials.metal",
     previewUrl:
       "/pallet-shelf/textures/metal/painted_metal_shutter_diff_1k.jpg",
     additionalCost: 800,
   },
   wood: {
-    name: "Drewno dębowe",
+    name: "materials.wood",
     previewUrl: "/pallet-shelf/textures/wood/wooden_planks_diff_1k.jpg",
     additionalCost: 2000,
   },
